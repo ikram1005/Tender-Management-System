@@ -1,24 +1,23 @@
 package com.masai.UseCases;
 
 import java.util.List;
-
-import com.masai.Dao.ProjectDao;
-import com.masai.Dao.ProjectDaoImp;
-import com.masai.bean.tender;
+import com.masai.Dao.TenderDao;
+import com.masai.Dao.TenderDaoImpl;
+import com.masai.model.Tender;
 
 public class Listoftender {
     public static void tender() {
-		ProjectDao pj=new ProjectDaoImp();
+		TenderDao pj=new TenderDaoImpl();
 		try {
-			List<tender> tenders=pj.getAllTender();
+			List<Tender> tenders=pj.getAllTenders();
 			
 			tenders.forEach(s ->{
-				System.out.println("Tender id"+s.getTid());
-				System.out.println("Tender name"+s.getTname());
-				System.out.println("Tender type"+s.getTtype());
-				System.out.println("Tender price"+s.getTprice());
-				System.out.println("Tender deadline"+s.getTdeadline());
-				System.out.println("Tender Location"+s.getTlocation());
+				System.out.println("Tender id"+s.getTendorid());
+				System.out.println("Tender name"+s.getTendorName());
+				System.out.println("Tender type"+s.getTendortype());
+				System.out.println("Tender price"+s.getTendorprice());
+				System.out.println("Tender deadline"+s.getDeadline());
+				System.out.println("Tender Location"+s.getLocation());
 				System.out.println("=====+=====+=====+=====+======");
 			});
 			

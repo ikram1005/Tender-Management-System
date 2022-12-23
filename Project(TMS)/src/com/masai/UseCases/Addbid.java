@@ -1,10 +1,13 @@
 package com.masai.UseCases;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
-import com.masai.Dao.ProjectDao;
-import com.masai.Dao.ProjectDaoImp;
-import com.masai.bean.bidder;
+import com.masai.Dao.BidderDao;
+import com.masai.Dao.BidderDaoImpl;
+import com.masai.model.Bidder;
 
 public class Addbid {
    public static void addb(){
@@ -22,21 +25,31 @@ public class Addbid {
 		System.out.println("Enter bidamount");
 		int ba=scanner.nextInt();
 		
-		System.out.println("Enter tender deadline");
+		System.out.println("Enter tender deadline in this format dd/MM/yyyy");
+		
 		String d=scanner.next();
+		
+		SimpleDateFormat format=new SimpleDateFormat("dd/MM/yyyy");
+		Date date=null;
+		try {
+			date=format.parse(d);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
 		
 		System.out.println("Enter status");
 		String s=scanner.next();
 		
-		ProjectDao pj=new ProjectDaoImp();
+		BidderDao pj=new BidderDaoImpl();
 		
-		bidder bd=new bidder();
+		Bidder bd=new Bidder();
 		
-		bd.getBid();
-		bd.getVid();
-		bd.getTid();
-		bd.getBidamount();
-		bd.getDdate();
+		bd.getId();
+		bd.getVendorid();
+		bd.getTenderid();
+		bd.getAmount();
+		bd.getDate();
 		bd.getStatus();
 		
 		String result=pj.addbid(bd);

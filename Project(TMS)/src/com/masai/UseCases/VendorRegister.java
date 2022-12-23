@@ -1,10 +1,9 @@
 package com.masai.UseCases;
 
 import java.util.Scanner;
-
-import com.masai.Dao.ProjectDao;
-import com.masai.Dao.ProjectDaoImp;
-import com.masai.bean.Vendor;
+import com.masai.Dao.VendorDao;
+import com.masai.Dao.VendorDaoImpl;
+import com.masai.model.Vendor;
 
 public class VendorRegister {
      public static void VendorR() {
@@ -31,13 +30,13 @@ public class VendorRegister {
 		System.out.println("Enter address");
 		String add=scanner.next();
 		
-		ProjectDao pj=new ProjectDaoImp();
+		VendorDao pj=new VendorDaoImpl();
 		Vendor ven=new Vendor();
-		ven.setVid(vid);
+		ven.setVendorid(vid);
 		ven.setPassword(pass);
-		ven.setVname(vname);
-		ven.setVmob(vmob);
-		ven.setVemail(vemail);
+		ven.setName(vname);
+		ven.setMobile(vmob);
+		ven.setEmail(vemail);
 		ven.setCompany(com);
 		ven.setAddress(add);
 		
