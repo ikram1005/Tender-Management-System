@@ -1,10 +1,12 @@
 package com.masai.UseCases;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
-
-import com.masai.Dao.ProjectDao;
-import com.masai.Dao.ProjectDaoImp;
-import com.masai.bean.tender;
+import com.masai.Dao.TenderDao;
+import com.masai.Dao.TenderDaoImpl;
+import com.masai.model.Tender;
 
 public class AddTender {
 	
@@ -23,22 +25,29 @@ public class AddTender {
 		System.out.println("Enter tender price");
 		int p=scanner.nextInt();
 		
-		System.out.println("Enter tender deadline");
-		String d=scanner.next();
+		System.out.println("Enter tender deadline in this format dd/MM/yyyy");
+        String d=scanner.next();
+		SimpleDateFormat format=new SimpleDateFormat("dd/MM/yyyy");
+		Date date=null;
+		try {
+			date=format.parse(d);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		
 		System.out.println("Enter tender location");
 		String l=scanner.next();
 		
-		ProjectDao pj=new ProjectDaoImp();
+		TenderDao pj=new TenderDaoImpl();
 		
-		tender tr=new tender();
+		Tender tr=new Tender();
 		
-		tr.setTid(tid);
-		tr.setTname(tn);
-		tr.setTtype(t);
-		tr.setTprice(p);
-		tr.setTdeadline(d);
-		tr.setTlocation(l);
+		tr.setTendorid(tid);
+		tr.setTendorName(tn);
+		tr.setTendortype(t);
+		tr.setTendorprice(p);
+		tr.setDeadline(date);
+		tr.setLocation(l);
 		
 		String result=pj.addTender(tr);
 		System.out.println(result);
