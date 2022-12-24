@@ -32,7 +32,9 @@ public class AddTender {
 		try {
 			date=format.parse(d);
 		} catch (ParseException e) {
-			e.printStackTrace();
+			System.out.println("Enter date in correct format");
+			System.out.println();
+			addt();
 		}
 		
 		System.out.println("Enter tender location");

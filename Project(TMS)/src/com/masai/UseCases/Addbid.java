@@ -14,29 +14,29 @@ public class Addbid {
 	   Scanner scanner=new Scanner(System.in);
 		
 		System.out.println("Enter bidder id");
-		String tid=scanner.next();
+		String bid=scanner.next();
 		
 		System.out.println("Enter vendor id");
 		int vid=scanner.nextInt();
 		
 		System.out.println("Enter tender id");
-		String t=scanner.next();
+		String tid=scanner.next();
 		
 		System.out.println("Enter bidamount");
 		int ba=scanner.nextInt();
-		
-		System.out.println("Enter tender deadline in this format dd/MM/yyyy");
-		
+	
+	    System.out.println("Enter tender deadline in this format dd/MM/yyyy");
+			
 		String d=scanner.next();
-		
 		SimpleDateFormat format=new SimpleDateFormat("dd/MM/yyyy");
 		Date date=null;
 		try {
 			date=format.parse(d);
 		} catch (ParseException e) {
-			e.printStackTrace();
+			System.out.println("Enter date in correct format");
+			System.out.println();
+			addb();
 		}
-		
 		
 		System.out.println("Enter status");
 		String s=scanner.next();
@@ -45,14 +45,16 @@ public class Addbid {
 		
 		Bidder bd=new Bidder();
 		
-		bd.getId();
-		bd.getVendorid();
-		bd.getTenderid();
-		bd.getAmount();
-		bd.getDate();
-		bd.getStatus();
+		bd.setId(bid);
+		bd.setVendorid(vid);
+		bd.setTenderid(tid);
+		bd.setAmount(ba);
+		bd.setDate(date);
+		bd.setStatus(s);
+		
 		
 		String result=pj.addbid(bd);
 		System.out.println(result);
 }
+   
 }

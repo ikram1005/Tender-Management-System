@@ -10,9 +10,9 @@ import com.masai.Exception.AdminException;
 import com.masai.Exception.VendorException;
 import com.masai.UseCases.AddTender;
 import com.masai.UseCases.Addbid;
-import com.masai.UseCases.AssignTender;
 import com.masai.UseCases.Listofbids;
 import com.masai.UseCases.Listoftender;
+import com.masai.UseCases.Listofvendor;
 import com.masai.UseCases.VendorRegister;
 import com.masai.model.Admin;
 import com.masai.model.Vendor;
@@ -21,6 +21,7 @@ public class Main {
 	public static void main(String[] args) {
 		System.out.println("******Welcome to Tender Management System******");
 		System.out.println("=======+=======+=======+=====+=====+=======+====");
+		
 		Scanner scanner = new Scanner(System.in);
 
 		int c;
@@ -48,10 +49,10 @@ public class Main {
 					int x;
 					do {
 						System.out.println("1.Register as Vendor");
-						System.out.println("2.View all Tender");
-						System.out.println("3.Create new Tendors");
+						System.out.println("2.View all Tenders");
+						System.out.println("3.Create new Tenders");
 						System.out.println("4.view all the bids of a tender");
-						System.out.println("5.Assign tender to a vendor");
+						System.out.println("5.view all vendors");
 						System.out.println("6.Exit");
 						System.out.println("Enter your choice");
 						x = scanner.nextInt();
@@ -74,16 +75,14 @@ public class Main {
 							break;
 						}
 						case 5: {
-							AssignTender.assignt();
+							Listofvendor.vedor();
 							break;
 						}
-						default: {
+						default:
 
 							System.out.println("Please enter valid input");
 
 							break;
-
-						}
 						}
 
 					} while (x != 6);
@@ -130,13 +129,11 @@ public class Main {
 							Listofbids.bids();
 							break;
 						}
-						default: {
+						default:
 
 							System.out.println("Please enter valid input");
 
 							break;
-
-						}
 						}
 
 					} while (x != 4);
@@ -150,4 +147,5 @@ public class Main {
 		} while (c != 3);
 		System.out.println("Thank you for using.....");
 	}
+
 }

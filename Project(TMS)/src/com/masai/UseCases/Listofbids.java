@@ -13,12 +13,12 @@ public class Listofbids {
 			List<Bidder> bidders = pj.getAllbidder();
 
 			bidders.forEach(s -> {
-				System.out.println("bidder id" + s.getId());
-				System.out.println("vendor id" + s.getVendorid());
-				System.out.println("Tender id" + s.getTenderid());
-				System.out.println("bid amount" + s.getAmount());
-				System.out.println("deadline" + s.getDate());
-				System.out.println("status" + s.getStatus());
+				System.out.println("bidder id :" + s.getId());
+				System.out.println("vendor id :" + s.getVendorid());
+				System.out.println("Tender id :" + s.getTenderid());
+				System.out.println("bid amount :" + s.getAmount());
+				System.out.println("deadline :" + s.getDate());
+				System.out.println("status :" + s.getStatus());
 				System.out.println("=====+=====+=====+=====+======");
 			});
 

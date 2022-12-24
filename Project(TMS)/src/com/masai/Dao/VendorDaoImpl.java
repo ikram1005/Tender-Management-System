@@ -4,9 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
+import com.masai.Exception.TenderException;
 import com.masai.Exception.VendorException;
 import com.masai.Utility.JdbcUtil;
+import com.masai.model.Tender;
 import com.masai.model.Vendor;
 
 public class VendorDaoImpl implements VendorDao {
@@ -20,7 +25,7 @@ public class VendorDaoImpl implements VendorDao {
 		PreparedStatement ps = null;
 
 		try {
-			pst1 = connection.prepareStatement("select * from vendor where email=?");
+			pst1 = connection.prepareStatement("select * from vendor where vemail=?");
 			pst1.setString(1, v.getEmail());
 			ResultSet rs = pst1.executeQuery();
 
@@ -64,7 +69,7 @@ public class VendorDaoImpl implements VendorDao {
 		Vendor vr = null;
 
 		try (Connection conn = JdbcUtil.provideConnection()) {
-			PreparedStatement ps = conn.prepareStatement("Select * from Vendor where email=? and password=?");
+			PreparedStatement ps = conn.prepareStatement("Select * from Vendor where vemail=? and password=?");
 
 			ps.setString(1, email);
 			ps.setString(2, pass);
@@ -86,10 +91,39 @@ public class VendorDaoImpl implements VendorDao {
 			}
 
 		} catch (SQLException e) {
-			throw new VendorException(e.getMessage());
+			System.out.println(e.getMessage());
 		}
 
 		return vr;
+	}
+
+	@Override
+	public List<Vendor> getAllVendors() throws VendorException {
+		List<Vendor> vendors = new ArrayList<>();
+		try (Connection conn = JdbcUtil.provideConnection()) {
+			PreparedStatement ps = conn.prepareStatement("Select * from vendor");
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				int v = rs.getInt("vid");
+				String p = rs.getString("Password");
+				String n= rs.getString("vname");
+				String m = rs.getString("vmob");
+				String e =rs.getString("vemail");
+				String c = rs.getString("company");
+				String a =rs.getString("address");
+				
+				Vendor vr =new Vendor(v,p,n,m,e,c,a);
+
+				vendors.add(vr);
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		if (vendors.size() == 0) {
+			throw new VendorException("No vendors found");
+		}
+
+		return vendors;
 	}
 
 }

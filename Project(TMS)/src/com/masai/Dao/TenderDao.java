@@ -13,6 +13,4 @@ public interface TenderDao {
     
     public String addTender(Tender t);
     
-    public String assigntender(String tid,int vid)throws TenderException,VendorException;
-    
 }

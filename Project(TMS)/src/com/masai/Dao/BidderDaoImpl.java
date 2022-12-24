@@ -25,7 +25,7 @@ public class BidderDaoImpl implements BidderDao {
 				int vid = rs.getInt("vid");
 				String tid = rs.getString("tid");
 				int ba = rs.getInt("bidamount");
-				Date dd = rs.getDate("dd");
+				Date dd = rs.getDate("deadline");
 				String st = rs.getString("status");
 
 				Bidder bd = new Bidder(id, vid, tid, ba, dd, st);
@@ -36,7 +36,7 @@ public class BidderDaoImpl implements BidderDao {
 			System.out.println(e.getMessage());
 		}
 		if (bidders.size() == 0) {
-			System.out.println("bid not found");
+			System.out.println("bids not found");
 		}
 
 		return bidders;
@@ -54,7 +54,9 @@ public class BidderDaoImpl implements BidderDao {
 			ps.setInt(2, b.getVendorid());
 			ps.setString(3, b.getTenderid());
 			ps.setInt(4, b.getAmount());
-			ps.setDate(5, (java.sql.Date) b.getDate());
+			Date dd=b.getDate();
+			java.sql.Date jd=new java.sql.Date(dd.getTime());
+			ps.setDate(5,jd);
 			ps.setString(6, b.getStatus());
 
 			int x = ps.executeUpdate();
@@ -63,7 +65,8 @@ public class BidderDaoImpl implements BidderDao {
 			}
 
 		} catch (SQLException e) {
-			m = e.getMessage();
+			   e.printStackTrace();
+			   System.out.println(e.getMessage());
 		}
 		return m;
 	}
