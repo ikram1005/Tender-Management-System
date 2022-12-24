@@ -9,19 +9,19 @@ public class VendorRegister {
      public static void VendorR() {
 		Scanner scanner=new Scanner(System.in);
 		
-		System.out.println("Enter vid");
+		System.out.println("Enter vendor id");
 		int vid=scanner.nextInt();
 		
 		System.out.println("Enter password");
 		String pass=scanner.next();
 		
-		System.out.println("Enter Vname");
+		System.out.println("Enter name");
 		String vname=scanner.next();
 		
-		System.out.println("Enter Vmob");
+		System.out.println("Enter mobile");
 		String vmob=scanner.next();
 		
-		System.out.println("Enter vemail");
+		System.out.println("Enter email");
 		String vemail=scanner.next();
 		
 		System.out.println("Enter Company");

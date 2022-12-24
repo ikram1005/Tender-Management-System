@@ -36,7 +36,7 @@ public class AdminDaoImpl implements AdminDao {
 			
 			
 		} catch (SQLException e) {
-			throw new AdminException(e.getMessage());
+			System.out.println(e.getMessage());
 		}
 		
 		
