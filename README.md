@@ -14,7 +14,7 @@ The company will then select the most suitable bid and places the order to that 
 
 ## Modules
 
-* Administrartor
+* Administrator
 * Vendor
 
 #### The Role of Administrator is :-
